@@ -1,15 +1,16 @@
 package org.firezenk.dslplayground
 
+import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import android.support.v7.widget.helper.ItemTouchHelper
-import android.support.design.widget.Snackbar
-import android.graphics.Color
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.DividerItemDecoration
 
 class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
@@ -61,7 +62,14 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.RecyclerItemTo
 
     private fun setupAdapter() {
         adapter.setOnItemClickListener {
-            showToast("Clicked: ${it.title}")
+
+            val uri = Uri.Builder().scheme("http")
+                    .authority("wikimedia.org")
+                    .appendPath("character")
+                    .appendPath(it.id.toString())
+                    .appendQueryParameter("lang", "es")
+                    .build()
+            showToast("Clicked: $uri")
         }
 
         adapter.submitList(charactersList)
@@ -85,7 +93,7 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.RecyclerItemTo
 
             val snackbar = Snackbar.make(container, "$name removed!", Snackbar.LENGTH_LONG)
             with(snackbar) {
-                setAction("UNDO",  {
+                setAction("UNDO", {
                     charactersList.add(deletedIndex, deletedItem)
                     adapter.notifyItemInserted(deletedIndex)
                 })
