@@ -1,6 +1,7 @@
 package org.firezenk.dslplayground
 
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -30,6 +31,12 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.Listener {
                     view.image.dsl { url = item.image }
                 }
                 click {
+                    val uri = Uri.Builder().scheme("http")
+                            .authority("wikimedia.org")
+                            .appendPath("character")
+                            .appendPath(it.id.toString())
+                            .appendQueryParameter("lang", "es")
+                            .build()
                     showToast("Clicked: ${it.title}")
                 }
                 swipe(R.id.viewForeground) {
