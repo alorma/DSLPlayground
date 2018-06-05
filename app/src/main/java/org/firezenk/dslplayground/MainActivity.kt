@@ -1,7 +1,6 @@
 package org.firezenk.dslplayground
 
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +13,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
 import org.firezenk.dslplayground.solutions.DSLAdapter
 import org.firezenk.dslplayground.solutions.adapterDSL
 import org.firezenk.dslplayground.solutions.dsl
+import org.firezenk.dslplayground.solutions.newUri
 import org.firezenk.dslplayground.util.dsl
 
 class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.Listener {
@@ -31,13 +31,24 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.Listener {
                     view.image.dsl { url = item.image }
                 }
                 click {
-                    val uri = Uri.Builder().scheme("http")
-                            .authority("wikimedia.org")
-                            .appendPath("character")
-                            .appendPath(it.id.toString())
-                            .appendQueryParameter("lang", "es")
-                            .build()
-                    showToast("Clicked: ${it.title}")
+                    val uri = newUri {
+                        scheme = "http"
+                        authority = "wikimedia.org"
+
+                        path { "character" }
+                        path { it.id.toString() }
+
+                        queryParam {
+                            key = "lang"
+                            value = "es"
+                        }
+                        queryParam {
+                            key = "images"
+                            value = "fullPath"
+                        }
+                    }
+
+                    showToast("Clicked: $uri")
                 }
                 swipe(R.id.viewForeground) {
                     swipeDirs = ItemTouchHelper.LEFT
@@ -120,6 +131,5 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.Listener {
 
     private fun showToast(id: Int) = Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
 
-    private fun showToast(stringId: String)
-            = Toast.makeText(this, stringId, Toast.LENGTH_SHORT).show()
+    private fun showToast(stringId: String) = Toast.makeText(this, stringId, Toast.LENGTH_SHORT).show()
 }
