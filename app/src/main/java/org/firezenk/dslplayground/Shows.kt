@@ -3,39 +3,69 @@ package org.firezenk.dslplayground
 object Shows {
 
     private val characteresRickMorty = mutableListOf(
-            TvCharacter(1, "Rick Sanchez",
-                    "A genius mad scientist who is the father of Beth Smith and the maternal grandfather of Morty",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/Rick_and_Morty_characters_-_Rick_Sanchez.jpg/110px-Rick_and_Morty_characters_-_Rick_Sanchez.jpg"),
-            TvCharacter(2, "Morty Smith",
-                    "Rick's 14-year-old grandson who is frequently dragged into Rick's misadventures.",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Rick_and_Morty_characters_-_Morty_Smith.jpg/110px-Rick_and_Morty_characters_-_Morty_Smith.jpg"),
-            TvCharacter(3, "Beth Smith",
-                    "Rick's daughter, Summer and Morty's mother, and Jerry's wife.",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/Rick_and_Morty_characters_-_Beth_Smith.jpg/110px-Rick_and_Morty_characters_-_Beth_Smith.jpg"),
-            TvCharacter(4, "Jerry Smith",
-                    "Summer and Morty's insecure father, Beth's husband, and Rick's son-in-law.",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Rick_and_Morty_characters_-_Jerry_Smith.jpg/110px-Rick_and_Morty_characters_-_Jerry_Smith.jpg"),
-            TvCharacter(5, "Summer Smith",
-                    "Morty's 17-year-old older sister, a more conventional and often superficial teenager.",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Rick_and_Morty_characters_-_Summer_Smith.jpg/110px-Rick_and_Morty_characters_-_Summer_Smith.jpg")
+            character {
+                id = 1
+                name = "Rick Sanchez"
+                description = "A genius mad scientist who is the father of Beth Smith and the maternal grandfather of Morty"
+                image = "https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/Rick_and_Morty_characters_-_Rick_Sanchez.jpg/110px-Rick_and_Morty_characters_-_Rick_Sanchez.jpg"
+            },
+            character {
+                id = 2
+                name = "Morty Smith"
+                description = "Rick's 14-year-old grandson who is frequently dragged into Rick's misadventures."
+                image = "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Rick_and_Morty_characters_-_Morty_Smith.jpg/110px-Rick_and_Morty_characters_-_Morty_Smith.jpg"
+            },
+            character {
+                id = 3
+                name = "Beth Smith"
+                description = "Rick's daughter, Summer and Morty's mother, and Jerry's wife."
+                image = "https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/Rick_and_Morty_characters_-_Beth_Smith.jpg/110px-Rick_and_Morty_characters_-_Beth_Smith.jpg"
+            },
+            character {
+                id = 4
+                name = "Jerry Smith"
+                description = "Summer and Morty's insecure father, Beth's husband, and Rick's son-in-law."
+                image = "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Rick_and_Morty_characters_-_Jerry_Smith.jpg/110px-Rick_and_Morty_characters_-_Jerry_Smith.jpg"
+            },
+            character {
+                id = 5
+                name = "Summer Smith"
+                description = "Morty's 17-year-old older sister, a more conventional and often superficial teenager."
+                image = "https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Rick_and_Morty_characters_-_Summer_Smith.jpg/110px-Rick_and_Morty_characters_-_Summer_Smith.jpg"
+            }
     )
 
     private val characteresSimpson = mutableListOf(
-            TvCharacter(1, "Maggie Simpson",
-                    "Maggie is the youngest child of Homer and Marge, and sister to Bart and Lisa. She is often seen sucking on her red pacifier and, when she walks, she trips over her clothing and falls on her face",
-                    "https://upload.wikimedia.org/wikipedia/en/9/9d/Maggie_Simpson.png"),
-            TvCharacter(2, "Lisa Simpson",
-                    "Intelligent, passionate, and the moral center of the family, Lisa Simpson, at eight years old, is the second child of Homer and Marge, younger sister of Bart, and older sister of Maggie. Lisa's high intellect and liberal political stance creates a barrier between her and other children her age, therefore she is a bit of a loner and social outcast.",
-                    "https://upload.wikimedia.org/wikipedia/en/e/ec/Lisa_Simpson.png"),
-            TvCharacter(3, "Bart Simpson",
-                    "At ten years old, Bart is the eldest child and only son of Homer and Marge, and the brother of Lisa and Maggie. Bart's most prominent and popular character traits are his mischievousness, rebelliousness and disrespect for authority.",
-                    "https://en.wikipedia.org/wiki/File:Bart_Simpson_200px.png"),
-            TvCharacter(3, "Marge Simpson",
-                    "Marge is the matriarch of the Simpson family. With her husband Homer, she has three children: Bart, Lisa, and Maggie. Marge is the moralistic force in her family and often provides a grounding voice in the midst of her family's antics by trying to maintain order in the Simpson household",
-                    "https://en.wikipedia.org/wiki/File:Marge_Simpson.png"),
-            TvCharacter(3, "Homer Simpson",
-                    "As the family's provider, he works at the Springfield Nuclear Power Plant as safety inspector. Homer embodies many American working class stereotypes: he is crude, bald, hot-tempered, obese, rule-neglecting, clumsy, lazy, heavy drinking, ignorant and idiotic; however, he is essentially a decent man and fiercely devoted to his family, often ignoring his own personal interests for those of his family.",
-                    "https://en.wikipedia.org/wiki/File:Homer_Simpson_2006.png")
+            character {
+                id = 1
+                name = "Maggie Simpson"
+                description = "Maggie is the youngest child of Homer and Marge, and sister to Bart and Lisa. She is often seen sucking on her red pacifier and, when she walks, she trips over her clothing and falls on her face"
+                image = "https://upload.wikimedia.org/wikipedia/en/9/9d/Maggie_Simpson.png"
+            },
+            character {
+                id = 2
+                name = "Lisa Simpson"
+                description = "Intelligent, passionate, and the moral center of the family, Lisa Simpson, at eight years old, is the second child of Homer and Marge, younger sister of Bart, and older sister of Maggie. Lisa's high intellect and liberal political stance creates a barrier between her and other children her age, therefore she is a bit of a loner and social outcast."
+                image = "https://upload.wikimedia.org/wikipedia/en/e/ec/Lisa_Simpson.png"
+            },
+            character {
+                id = 3
+                name = "Bart Simpson"
+                description = "At ten years old, Bart is the eldest child and only son of Homer and Marge, and the brother of Lisa and Maggie. Bart's most prominent and popular character traits are his mischievousness, rebelliousness and disrespect for authority."
+                image = "https://en.wikipedia.org/wiki/File:Bart_Simpson_200px.png"
+            },
+            character {
+                id = 4
+                name = "Marge Simpson"
+                description = "Marge is the matriarch of the Simpson family. With her husband Homer, she has three children: Bart, Lisa, and Maggie. Marge is the moralistic force in her family and often provides a grounding voice in the midst of her family's antics by trying to maintain order in the Simpson household"
+                image = "https://en.wikipedia.org/wiki/File:Marge_Simpson.png"
+            },
+            character {
+                id = 5
+                name = "Homer Simpson"
+                description = "As the family's provider, he works at the Springfield Nuclear Power Plant as safety inspector. Homer embodies many American working class stereotypes: he is crude, bald, hot-tempered, obese, rule-neglecting, clumsy, lazy, heavy drinking, ignorant and idiotic; however, he is essentially a decent man and fiercely devoted to his family, often ignoring his own personal interests for those of his family."
+                image = "https://en.wikipedia.org/wiki/File:Homer_Simpson_2006.png"
+            }
     )
 
     val shows: MutableList<TvShow> = mutableListOf(
