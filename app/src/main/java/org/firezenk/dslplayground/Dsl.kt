@@ -24,10 +24,6 @@ class TvShowBuilder {
 
     fun build(): TvShow = TvShow(id, name, description, image, characters.toList())
 
-    fun character(character: TvCharacter) {
-        characters.add(character)
-    }
-
     fun character(setup: TvCharacterBuilder.() -> Unit) {
         characters.add(TvCharacterBuilder().apply(setup).build())
     }
