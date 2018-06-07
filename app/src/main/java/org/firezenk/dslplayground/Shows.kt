@@ -74,12 +74,18 @@ object Shows {
                 name = "Rick and Morty"
                 description = "The show revolves around the adventures of the members of the Smith household, which consists of parents Jerry and Beth, their kids Summer and Morty, and Beth's father, Rick Sanchez, who lives with them as a guest. According to Justin Roiland, the family lives outside of Seattle in the U.S. state of Washington.[2] The adventures of Rick and Morty, however, take place across an infinite number of realities, with the characters travelling to other planets and dimensions through portals and Rick's flying car."
                 image = "https://upload.wikimedia.org/wikipedia/en/b/b0/Rick_and_Morty_characters.jpg"
+                characteresRickMorty.forEach {
+                    character(it)
+                }
             },
             tvShow {
                 id = 2
                 name = "The Simpsons"
                 description = "The Simpsons are a family who live in a fictional \"Middle America\" town of Springfield.[11] Homer, the father, works as a safety inspector at the Springfield Nuclear Power Plant, a position at odds with his careless, buffoonish personality. He is married to Marge, a stereotypical American housewife and mother. They have three children: Bart, a ten-year-old troublemaker; Lisa, a precocious eight-year-old activist; and Maggie, the baby of the family who rarely speaks, but communicates by sucking on a pacifier. Although the family is dysfunctional, many episodes examine their relationships and bonds with each other and they are often shown to care about one another.[12] The family owns a dog, Santa's Little Helper, and a cat, Snowball V, renamed Snowball II in \"I, (Annoyed Grunt)-Bot\".[13] Both pets have had starring roles in several episodes."
                 image = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/The_Simpsons_Logo.svg/500px-The_Simpsons_Logo.svg.png"
+                characteresSimpson.forEach {
+                    character(it)
+                }
             }
     )
 }
