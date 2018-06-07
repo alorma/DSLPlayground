@@ -10,45 +10,46 @@ import android.widget.ImageView
 import android.widget.TextView
 import org.firezenk.dslplayground.util.dsl
 
-class MainAdapter : ListAdapter<ListItem, MainAdapter.ViewHolder>(ItemDiffCallback()) {
+class MainAdapter : ListAdapter<TvShow, MainAdapter.ViewHolder>(ItemDiffCallback()) {
 
-    private lateinit var clickListener: (ListItem) -> Unit
+    private lateinit var clickListener: (TvShow) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(inflater.inflate(R.layout.list_item, parent, false))
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int)
-            = holder.bind(getItem(position), clickListener)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position), clickListener)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val viewForeground = itemView.findViewById<View>(R.id.viewForeground)
         private val title = itemView.findViewById<TextView>(R.id.title)
         private val subtitle = itemView.findViewById<TextView>(R.id.subtitle)
+        private val characters = itemView.findViewById<TextView>(R.id.characters)
         private val image = itemView.findViewById<ImageView>(R.id.image)
 
-        fun bind(item: ListItem, clickListener: (ListItem) -> Unit) {
-            title.text = item.title
-            subtitle.text = item.subtitle
+        fun bind(item: TvShow, clickListener: (TvShow) -> Unit) {
+            title.text = item.name
+            subtitle.text = item.description
+            characters.text = "${item.casting.size} characters"
             image.dsl { url = item.image }
             itemView.setOnClickListener { clickListener(item) }
         }
     }
 
-    fun setOnItemClickListener(block: (ListItem) -> Unit) {
+    fun setOnItemClickListener(block: (TvShow) -> Unit) {
         clickListener = block
     }
 }
 
-class ItemDiffCallback : DiffUtil.ItemCallback<ListItem>() {
+class ItemDiffCallback : DiffUtil.ItemCallback<TvShow>() {
 
-    override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
+    override fun areItemsTheSame(oldItem: TvShow, newItem: TvShow): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
+    override fun areContentsTheSame(oldItem: TvShow, newItem: TvShow): Boolean {
         return oldItem == newItem
     }
 }

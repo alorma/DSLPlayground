@@ -15,23 +15,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private val adapter = MainAdapter()
-    private val charactersList = mutableListOf(
-            ListItem(1, "Rick Sanchez",
-                    "A genius mad scientist who is the father of Beth Smith and the maternal grandfather of Morty",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/Rick_and_Morty_characters_-_Rick_Sanchez.jpg/110px-Rick_and_Morty_characters_-_Rick_Sanchez.jpg"),
-            ListItem(2, "Morty Smith",
-                    "Rick's 14-year-old grandson who is frequently dragged into Rick's misadventures.",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Rick_and_Morty_characters_-_Morty_Smith.jpg/110px-Rick_and_Morty_characters_-_Morty_Smith.jpg"),
-            ListItem(3, "Beth Smith",
-                    "Rick's daughter, Summer and Morty's mother, and Jerry's wife.",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/Rick_and_Morty_characters_-_Beth_Smith.jpg/110px-Rick_and_Morty_characters_-_Beth_Smith.jpg"),
-            ListItem(4, "Jerry Smith",
-                    "Summer and Morty's insecure father, Beth's husband, and Rick's son-in-law.",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Rick_and_Morty_characters_-_Jerry_Smith.jpg/110px-Rick_and_Morty_characters_-_Jerry_Smith.jpg"),
-            ListItem(5, "Summer Smith",
-                    "Morty's 17-year-old older sister, a more conventional and often superficial teenager.",
-                    "https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Rick_and_Morty_characters_-_Summer_Smith.jpg/110px-Rick_and_Morty_characters_-_Summer_Smith.jpg")
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +55,7 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.RecyclerItemTo
             showToast("Clicked: $uri")
         }
 
-        adapter.submitList(charactersList)
+        adapter.submitList(Shows.shows)
 
         val itemTouchHelperCallback = RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(list)
@@ -83,18 +66,18 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.RecyclerItemTo
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {
         if (viewHolder is MainAdapter.ViewHolder) {
-            val name = charactersList[viewHolder.adapterPosition].title
+            val name = Shows.shows[viewHolder.adapterPosition].name
 
             val deletedIndex = viewHolder.adapterPosition
-            val deletedItem = charactersList[deletedIndex]
+            val deletedItem = Shows.shows[deletedIndex]
 
-            charactersList.removeAt(position)
+            Shows.shows.removeAt(position)
             adapter.notifyItemRemoved(position)
 
             val snackbar = Snackbar.make(container, "$name removed!", Snackbar.LENGTH_LONG)
             with(snackbar) {
                 setAction("UNDO", {
-                    charactersList.add(deletedIndex, deletedItem)
+                    Shows.shows.add(deletedIndex, deletedItem)
                     adapter.notifyItemInserted(deletedIndex)
                 })
                 setActionTextColor(Color.YELLOW)
