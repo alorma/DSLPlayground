@@ -26,11 +26,11 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.RecyclerItemTo
             item(R.id.navigation_home) {
                 showToast(R.string.title_home)
             }
-            item(R.id.navigation_dashboard) {
-                showToast(R.string.title_dashboard)
-            }
             item(R.id.navigation_notifications) {
                 showToast(R.string.title_notifications)
+            }
+            item(R.id.navigation_dashboard) {
+                showToast(R.string.title_dashboard)
             }
         }
     }

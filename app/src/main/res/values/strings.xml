@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">DSL Playground</string>
     <string name="title_home">Home</string>
+    <string name="title_home_reselect">Re select Home</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard_reselect">Re select Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_notifications_reselect">Re select Notifications</string>
     <string name="item_delete">Delete</string>
 </resources>
