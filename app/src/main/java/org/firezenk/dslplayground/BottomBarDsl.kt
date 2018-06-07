@@ -23,6 +23,9 @@ class BottomBarBuilder {
                 true
             } ?: false
         }
+        navigationView.setOnNavigationItemReselectedListener { menuItem ->
+            items[menuItem.itemId]?.invoke(menuItem)
+        }
     }
 
     fun item(itemId: Int, action: (MenuItem) -> Unit) {
