@@ -13,3 +13,16 @@ class TvCharacterBuilder {
 
 fun character(setup: TvCharacterBuilder.() -> Unit): TvCharacter =
         TvCharacterBuilder().apply(setup).build()
+
+class TvShowBuilder {
+    var id: Int = 0
+    var name: String = ""
+    var description: String = ""
+    var image: String = ""
+    val characters: List<TvCharacter> = mutableListOf()
+
+
+    fun build(): TvShow = TvShow(id, name, description, image, characters)
+}
+
+fun tvShow(setup: TvShowBuilder.() -> Unit): TvShow = TvShowBuilder().apply(setup).build()
