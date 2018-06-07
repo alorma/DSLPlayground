@@ -4,6 +4,14 @@ package org.firezenk.dslplayground
 annotation class ShowDsl
 
 @ShowDsl
+class CHARACTERS : ArrayList<TvCharacter>() {
+    @ShowDsl
+    fun character(setup: TvCharacterBuilder.() -> Unit) {
+        add(TvCharacterBuilder().apply(setup).build())
+    }
+}
+
+@ShowDsl
 class TvCharacterBuilder {
     var id: Int = 0
     var name: String = ""
@@ -14,22 +22,17 @@ class TvCharacterBuilder {
 }
 
 @ShowDsl
-fun character(setup: TvCharacterBuilder.() -> Unit): TvCharacter =
-        TvCharacterBuilder().apply(setup).build()
-
-@ShowDsl
 class TvShowBuilder {
     var id: Int = 0
     var name: String = ""
     var description: String = ""
     var image: String = ""
-    val characters: MutableList<TvCharacter> = mutableListOf()
+    private var characters: List<TvCharacter> = mutableListOf()
 
     fun build(): TvShow = TvShow(id, name, description, image, characters.toList())
 
-    @ShowDsl
-    fun character(setup: TvCharacterBuilder.() -> Unit) {
-        characters.add(TvCharacterBuilder().apply(setup).build())
+    fun characters(setup: CHARACTERS.() -> Unit) {
+        characters = CHARACTERS().apply(setup)
     }
 }
 
