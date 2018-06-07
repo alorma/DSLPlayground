@@ -56,12 +56,6 @@ object Shows {
                     name = "Lisa Simpson"
                     description = "Intelligent, passionate, and the moral center of the family, Lisa Simpson, at eight years old, is the second child of Homer and Marge, younger sister of Bart, and older sister of Maggie. Lisa's high intellect and liberal political stance creates a barrier between her and other children her age, therefore she is a bit of a loner and social outcast."
                     image = "https://upload.wikimedia.org/wikipedia/en/e/ec/Lisa_Simpson.png"
-                    character {
-                        id = 2
-                        name = "Lisax Simpson"
-                        description = "Intelligent, passionate, and the moral center of the family, Lisa Simpson, at eight years old, is the second child of Homer and Marge, younger sister of Bart, and older sister of Maggie. Lisa's high intellect and liberal political stance creates a barrier between her and other children her age, therefore she is a bit of a loner and social outcast."
-                        image = "https://upload.wikimedia.org/wikipedia/en/e/ec/Lisa_Simpson.png"
-                    }
                 }
                 character {
                     id = 3
