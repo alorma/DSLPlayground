@@ -27,6 +27,10 @@ class TvShowBuilder {
     fun character(character: TvCharacter) {
         characters.add(character)
     }
+
+    fun character(setup: TvCharacterBuilder.() -> Unit) {
+        characters.add(TvCharacterBuilder().apply(setup).build())
+    }
 }
 
 fun tvShow(setup: TvShowBuilder.() -> Unit): TvShow = TvShowBuilder().apply(setup).build()
