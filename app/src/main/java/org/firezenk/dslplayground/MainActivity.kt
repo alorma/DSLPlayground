@@ -3,7 +3,6 @@ package org.firezenk.dslplayground
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
@@ -22,25 +21,18 @@ class MainActivity : AppCompatActivity(), RecyclerItemTouchHelper.RecyclerItemTo
 
         setupAdapter()
 
-        navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-    }
-
-    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_home -> {
+        navigation.dsl {
+            menu = R.menu.navigation
+            item(R.id.navigation_home) {
                 showToast(R.string.title_home)
-                return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
+            item(R.id.navigation_dashboard) {
                 showToast(R.string.title_dashboard)
-                return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_notifications -> {
+            item(R.id.navigation_notifications) {
                 showToast(R.string.title_notifications)
-                return@OnNavigationItemSelectedListener true
             }
         }
-        false
     }
 
     private fun setupAdapter() {
